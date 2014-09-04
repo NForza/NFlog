@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NFlog", "NFlog.csproj", "{F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NFlog.TestApp", "..\NFlog.TestApp\NFlog.TestApp.csproj", "{717937C4-D416-46D8-91EC-863E18AE6D99}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NFlog.Viewer", "..\NFlog.Viewer\WpfApplication1\NFlog.Viewer.csproj", "{2EEA4677-A87F-4A5A-B0B5-3E7901020EB8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NFlog.Viewer", "..\NFlog.Viewer\NFlog.Viewer.csproj", "{2EEA4677-A87F-4A5A-B0B5-3E7901020EB8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
