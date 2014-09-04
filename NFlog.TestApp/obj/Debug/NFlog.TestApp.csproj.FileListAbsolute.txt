@@ -1,4 +1,3 @@
-C:\Develop\NForza\NFlog\NFlog.TestApp\obj\Debug\NFlog.TestApp.csprojResolveAssemblyReference.cache
 C:\Develop\NForza\NFlog\NFlog.TestApp\bin\Debug\NFlog.TestApp.exe.config
 C:\Develop\NForza\NFlog\NFlog.TestApp\bin\Debug\NFlog.TestApp.exe
 C:\Develop\NForza\NFlog\NFlog.TestApp\bin\Debug\NFlog.TestApp.pdb
@@ -6,5 +5,6 @@ C:\Develop\NForza\NFlog\NFlog.TestApp\bin\Debug\NFlog.dll
 C:\Develop\NForza\NFlog\NFlog.TestApp\bin\Debug\Newtonsoft.Json.dll
 C:\Develop\NForza\NFlog\NFlog.TestApp\bin\Debug\NFlog.pdb
 C:\Develop\NForza\NFlog\NFlog.TestApp\bin\Debug\Newtonsoft.Json.xml
+C:\Develop\NForza\NFlog\NFlog.TestApp\obj\Debug\NFlog.TestApp.csprojResolveAssemblyReference.cache
 C:\Develop\NForza\NFlog\NFlog.TestApp\obj\Debug\NFlog.TestApp.exe
 C:\Develop\NForza\NFlog\NFlog.TestApp\obj\Debug\NFlog.TestApp.pdb
