@@ -1,7 +1,0 @@
-C:\Develop\NForza\NFlog\NFlog\bin\Debug\NFlog.dll
-C:\Develop\NForza\NFlog\NFlog\bin\Debug\NFlog.pdb
-C:\Develop\NForza\NFlog\NFlog\bin\Debug\Newtonsoft.Json.dll
-C:\Develop\NForza\NFlog\NFlog\bin\Debug\Newtonsoft.Json.xml
-C:\Develop\NForza\NFlog\NFlog\obj\Debug\NFlog.csprojResolveAssemblyReference.cache
-C:\Develop\NForza\NFlog\NFlog\obj\Debug\NFlog.dll
-C:\Develop\NForza\NFlog\NFlog\obj\Debug\NFlog.pdb

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NFlog.TestApp
 {
@@ -12,6 +10,7 @@ namespace NFlog.TestApp
         {
             NFlogger logger = new NFlogger();
             logger.LogMessage("hello world");
+            logger.LogWarning("Be careful");
         }
     }
 }
