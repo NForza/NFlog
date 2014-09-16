@@ -6,6 +6,7 @@ namespace NFlog.Core
 {
     public class NFlogMessage
     {
+        public const string MessageSeparator = "##NFLOG##";
         public int MessageType { get; set; }
         public string Message { get; set; }
         public DateTime DateTime { get; set; }

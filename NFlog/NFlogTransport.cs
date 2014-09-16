@@ -1,3 +1,4 @@
+using NFlog.Core;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -28,6 +29,7 @@ namespace NFlog
         public void Transport(string message)
         {
             logfile.WriteLine(message);
+            logfile.WriteLine(NFlogMessage.MessageSeparator);
         }
     }
 }

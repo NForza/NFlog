@@ -6,7 +6,15 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary>
-                    <app:AppBootstrapper x:Key="bootstrapper" />                                                                                                 
+                    <app:AppBootstrapper x:Key="bootstrapper" />    
+                    
+                    <DataTemplate x:Key="DefaultMessageTemplate">
+                        <StackPanel>
+                            <TextBlock Text="{Binding MessageType}" />
+                            <TextBlock Text="{Binding Message}" />
+                        </StackPanel>  
+                    </DataTemplate>
+                    
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
