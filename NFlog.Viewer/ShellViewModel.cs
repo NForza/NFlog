@@ -1,5 +1,7 @@
 using Caliburn.Micro;
 using Microsoft.Win32;
+using NFlog.Core;
+using System.Collections.Generic;
 using System.IO;
 
 namespace NFlog.Viewer
@@ -20,19 +22,20 @@ namespace NFlog.Viewer
 
         public void RefreshFile()
         {
-            Contents = File.ReadAllText(fileName);
+            NFlogDeserializer deserializer = new NFlogDeserializer();
+            Messages = deserializer.Deserialize(File.ReadAllText(fileName));
         }
 
-        private string _Contents;
-        public string Contents
+        private IEnumerable<NFlogMessage> messages;
+        public IEnumerable<NFlogMessage> Messages
         {
             get
             {
-                return _Contents;
+                return messages;
             }
             set
             {
-                _Contents = value;
+                messages = value;
                 NotifyOfPropertyChange();
             }
         }

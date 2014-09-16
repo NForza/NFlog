@@ -7,7 +7,7 @@
             <Button Name="LoadFile" Content="Open File"/>
             <Button Name="RefreshFile" Content="Refresh File"/>
         </StackPanel>
-        <TextBlock Name="Contents" />
+        <ListBox Name="Messages" />
     </StackPanel>
 
 </Window>
