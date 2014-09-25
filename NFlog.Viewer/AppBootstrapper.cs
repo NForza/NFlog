@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using Caliburn.Micro;
+using NFlog.Core;
+using NFlog.Viewer.WebApi;
 
 namespace NFlog.Viewer 
 {
@@ -18,6 +20,7 @@ namespace NFlog.Viewer
 
             container.Singleton<IWindowManager, WindowManager>();
             container.Singleton<IEventAggregator, EventAggregator>();
+            container.Singleton<INFlogWebApi, NFlogWebApi>().GetInstance<INFlogWebApi>();
             container.PerRequest<IShell, ShellViewModel>();
         }
 
