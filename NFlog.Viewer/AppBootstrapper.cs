@@ -10,7 +10,8 @@ namespace NFlog.Viewer
     {
         SimpleContainer container;
 
-        public AppBootstrapper() {
+        public AppBootstrapper() 
+        {
             Initialize();
         }
 
@@ -20,7 +21,9 @@ namespace NFlog.Viewer
 
             container.Singleton<IWindowManager, WindowManager>();
             container.Singleton<IEventAggregator, EventAggregator>();
-            container.Singleton<INFlogWebApi, NFlogWebApi>().GetInstance<INFlogWebApi>();
+
+            if (!Execute.InDesignMode)
+                container.Singleton<INFlogWebApi, NFlogWebApi>().GetInstance<INFlogWebApi>();
             container.PerRequest<IShell, ShellViewModel>();
         }
 
@@ -46,6 +49,12 @@ namespace NFlog.Viewer
         protected override void OnStartup(object sender, System.Windows.StartupEventArgs e) 
         {
             DisplayRootViewFor<IShell>();
+        }
+
+        protected override void OnExit(object sender, EventArgs e)
+        {
+            base.OnExit(sender, e);
+            (container.GetInstance<INFlogWebApi>() as IDisposable).Dispose();
         }
     }
 }

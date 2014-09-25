@@ -5,7 +5,7 @@ namespace NFlog
     public class NFlogger : INFlog
     {
         private INFlogSerializer serializer = new NFlogSerializer();
-        private INFlogTransport transport = new NFlogFileTransport();
+        private INFlogTransport transport = new NFlogHttpTransport();
         
         public INFlogSerializer Serializer
         {

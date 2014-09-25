@@ -9,7 +9,7 @@ namespace NFlog.Viewer.WebApi
 
         public NFlogWebApi()
         {
-            app = WebApp.Start<Startup>("http://localhost:12347");
+            app = WebApp.Start<Startup>("http://localhost:12349");
         }
 
         ~NFlogWebApi()
