@@ -14,7 +14,15 @@
                             <TextBlock Text="{Binding Message}" />
                         </StackPanel>  
                     </DataTemplate>
-                    
+
+                    <DataTemplate x:Key="WarningTemplate">
+                        <StackPanel Background="Yellow">
+                            <TextBlock Text="{Binding MessageType}" />
+                            <TextBlock Text="{Binding Message}" />
+                        </StackPanel>
+                    </DataTemplate>
+
+
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

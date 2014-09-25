@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30626.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NFlog", "NFlog.csproj", "{F6F61371-17C2-4101-BE9C-ADA10B60989F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NFlog", "NFlog\NFlog.csproj", "{F6F61371-17C2-4101-BE9C-ADA10B60989F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NFlog.TestApp", "..\NFlog.TestApp\NFlog.TestApp.csproj", "{717937C4-D416-46D8-91EC-863E18AE6D99}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NFlog.TestApp", "NFlog.TestApp\NFlog.TestApp.csproj", "{717937C4-D416-46D8-91EC-863E18AE6D99}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NFlog.Viewer", "..\NFlog.Viewer\NFlog.Viewer.csproj", "{2EEA4677-A87F-4A5A-B0B5-3E7901020EB8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NFlog.Viewer", "NFlog.Viewer\NFlog.Viewer.csproj", "{2EEA4677-A87F-4A5A-B0B5-3E7901020EB8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{2D801B50-5DEB-4EB2-85E5-E9CE6694A386}"
 	ProjectSection(SolutionItems) = preProject
@@ -16,7 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{2D801B
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NFlog.Core", "..\NFlog.Core\NFlog.Core.csproj", "{E92BC8F7-4599-41E2-8D89-24A221D08B6C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NFlog.Core", "NFlog.Core\NFlog.Core.csproj", "{E92BC8F7-4599-41E2-8D89-24A221D08B6C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

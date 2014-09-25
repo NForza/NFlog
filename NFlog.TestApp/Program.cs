@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace NFlog.TestApp
+﻿namespace NFlog.TestApp
 {
     class Program
     {
