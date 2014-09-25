@@ -1,11 +1,10 @@
-using NFlog.Core;
 using System;
 using System.IO;
 using System.Reflection;
 
-namespace NFlog
+namespace NFlog.Core
 {
-    public class NFlogTransport : INFlogTransport, IDisposable
+    public class NFlogFileTransport : INFlogTransport, IDisposable
     {
         private StreamWriter logfile;
 
@@ -18,7 +17,7 @@ namespace NFlog
             }
         }
 
-        public NFlogTransport()
+        public NFlogFileTransport()
         {
             logfile = File.CreateText(Assembly.GetEntryAssembly().Location + ".nflog");
             logfile.AutoFlush = true;

@@ -46,8 +46,10 @@
   <ItemGroup>
     <Compile Include="INFlogDeserializer.cs" />
     <Compile Include="INFlogSerializer.cs" />
+    <Compile Include="INFlogTransport.cs" />
     <Compile Include="MessageTypes.cs" />
     <Compile Include="NFlogMessage.cs" />
+    <Compile Include="NFlogFileTransport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,4 +1,4 @@
-namespace NFlog
+namespace NFlog.Core
 {
     public interface INFlogTransport
     {
