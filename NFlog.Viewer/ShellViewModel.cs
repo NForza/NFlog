@@ -1,14 +1,23 @@
+using System.Collections.ObjectModel;
 using Caliburn.Micro;
 using Microsoft.Win32;
 using NFlog.Core;
 using System.Collections.Generic;
 using System.IO;
+using NFlog.Viewer.WebApi;
 
 namespace NFlog.Viewer
 {
-    public class ShellViewModel : PropertyChangedBase, IShell
+    public class ShellViewModel : PropertyChangedBase, IShell, IHandle<MessageReceivedEvent>
     {
+        private readonly IEventAggregator eventAggregator;
         private string fileName;
+
+        public ShellViewModel(INFlogWebApi webapi, IEventAggregator eventAggregator)
+        {
+            eventAggregator.Subscribe(this);
+            Messages = new ObservableCollection<NFlogMessage>();
+        }
 
         public void LoadFile()
         {
@@ -23,11 +32,11 @@ namespace NFlog.Viewer
         public void RefreshFile()
         {
             NFlogDeserializer deserializer = new NFlogDeserializer();
-            Messages = deserializer.Deserialize(File.ReadAllText(fileName));
+            Messages = new ObservableCollection<NFlogMessage>( deserializer.Deserialize(File.ReadAllText(fileName)));
         }
 
-        private IEnumerable<NFlogMessage> messages;
-        public IEnumerable<NFlogMessage> Messages
+        private ObservableCollection<NFlogMessage> messages;
+        public ObservableCollection<NFlogMessage> Messages
         {
             get
             {
@@ -38,6 +47,11 @@ namespace NFlog.Viewer
                 messages = value;
                 NotifyOfPropertyChange();
             }
+        }
+
+        public void Handle(MessageReceivedEvent msg)
+        {
+           Messages.Add( msg.Message );           
         }
     }
 }

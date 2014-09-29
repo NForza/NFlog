@@ -1,52 +1,58 @@
 using System;
 using System.Collections.Generic;
+using Autofac;
 using Caliburn.Micro;
-using NFlog.Core;
 using NFlog.Viewer.WebApi;
 
-namespace NFlog.Viewer 
+namespace NFlog.Viewer
 {
     public class AppBootstrapper : BootstrapperBase
     {
-        SimpleContainer container;
+        public static IContainer Container = null;
 
-        public AppBootstrapper() 
+        public AppBootstrapper()
         {
             Initialize();
         }
 
-        protected override void Configure() 
+        protected override void Configure()
         {
-            container = new SimpleContainer();
+            var containerBuilder = new ContainerBuilder();
 
-            container.Singleton<IWindowManager, WindowManager>();
-            container.Singleton<IEventAggregator, EventAggregator>();
+            containerBuilder.RegisterType<WindowManager>().As<IWindowManager>().SingleInstance();
+            containerBuilder.RegisterType<EventAggregator>().As<IEventAggregator>().SingleInstance();
 
-            if (!Execute.InDesignMode)
-                container.Singleton<INFlogWebApi, NFlogWebApi>().GetInstance<INFlogWebApi>();
-            container.PerRequest<IShell, ShellViewModel>();
+            containerBuilder.RegisterType<NFlogWebApi>().As<INFlogWebApi>().SingleInstance();
+            containerBuilder.RegisterType<ShellViewModel>().As<IShell>().SingleInstance();
+            Container = containerBuilder.Build();
         }
 
-        protected override object GetInstance(Type service, string key) 
+        protected override object GetInstance(Type service, string key)
         {
-            var instance = container.GetInstance(service, key);
-            if (instance != null)
-                return instance;
-
-            throw new InvalidOperationException("Could not locate any instances.");
+            if (string.IsNullOrWhiteSpace(key))
+            {
+                if (Container.IsRegistered(service))
+                    return Container.Resolve(service);
+            }
+            else
+            {
+                if (Container.IsRegisteredWithKey(key, service))
+                    return Container.ResolveKeyed(key, service);
+            }
+            throw new Exception(string.Format("Could not locate any instances of contract {0}.", key ?? service.Name));
         }
 
-        protected override IEnumerable<object> GetAllInstances(Type service) 
+        protected override IEnumerable<object> GetAllInstances(Type serviceType)
         {
-            return container.GetAllInstances(service);
+            return Container.Resolve(typeof(IEnumerable<>).MakeGenericType(serviceType)) as IEnumerable<object>;
         }
 
-        protected override void BuildUp(object instance) 
+        protected override void BuildUp(object instance)
         {
-            container.BuildUp(instance);
+            Container.InjectProperties(instance);
         }
 
-        protected override void OnStartup(object sender, System.Windows.StartupEventArgs e) 
+        protected override void OnStartup(object sender, System.Windows.StartupEventArgs e)
         {
             DisplayRootViewFor<IShell>();
         }
@@ -54,7 +60,7 @@ namespace NFlog.Viewer
         protected override void OnExit(object sender, EventArgs e)
         {
             base.OnExit(sender, e);
-            (container.GetInstance<INFlogWebApi>() as IDisposable).Dispose();
+            (Container.Resolve<INFlogWebApi>() as IDisposable).Dispose();
         }
     }
 }

@@ -111,6 +111,7 @@
     </Compile>
     <Compile Include="WebApi\INFlogWebApi.cs" />
     <Compile Include="WebApi\MessageController.cs" />
+    <Compile Include="WebApi\MessageReceivedEvent.cs" />
     <Compile Include="WebApi\NFlogWebApi.cs" />
     <Compile Include="WebApi\Startup.cs" />
     <Page Include="ShellView.xaml">
