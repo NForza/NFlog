@@ -5,8 +5,6 @@ VisualStudioVersion = 12.0.30626.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NFlog", "NFlog\NFlog.csproj", "{F6F61371-17C2-4101-BE9C-ADA10B60989F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NFlog.TestApp", "NFlog.TestApp\NFlog.TestApp.csproj", "{717937C4-D416-46D8-91EC-863E18AE6D99}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NFlog.Viewer", "NFlog.Viewer\NFlog.Viewer.csproj", "{2EEA4677-A87F-4A5A-B0B5-3E7901020EB8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{2D801B50-5DEB-4EB2-85E5-E9CE6694A386}"
@@ -18,6 +16,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{2D801B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NFlog.Core", "NFlog.Core\NFlog.Core.csproj", "{E92BC8F7-4599-41E2-8D89-24A221D08B6C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NFlog.TestApp", "NFlog.TestApp\NFlog.TestApp.csproj", "{D0988440-BA41-4201-B155-285775EFA137}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,10 +28,6 @@ Global
 		{F6F61371-17C2-4101-BE9C-ADA10B60989F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F6F61371-17C2-4101-BE9C-ADA10B60989F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F6F61371-17C2-4101-BE9C-ADA10B60989F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{717937C4-D416-46D8-91EC-863E18AE6D99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{717937C4-D416-46D8-91EC-863E18AE6D99}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{717937C4-D416-46D8-91EC-863E18AE6D99}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{717937C4-D416-46D8-91EC-863E18AE6D99}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2EEA4677-A87F-4A5A-B0B5-3E7901020EB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2EEA4677-A87F-4A5A-B0B5-3E7901020EB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2EEA4677-A87F-4A5A-B0B5-3E7901020EB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -40,6 +36,10 @@ Global
 		{E92BC8F7-4599-41E2-8D89-24A221D08B6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E92BC8F7-4599-41E2-8D89-24A221D08B6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E92BC8F7-4599-41E2-8D89-24A221D08B6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0988440-BA41-4201-B155-285775EFA137}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0988440-BA41-4201-B155-285775EFA137}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0988440-BA41-4201-B155-285775EFA137}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0988440-BA41-4201-B155-285775EFA137}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

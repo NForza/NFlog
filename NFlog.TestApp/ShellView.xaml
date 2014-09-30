@@ -1,0 +1,10 @@
+<Window x:Class="NFlog.TestApp.ShellView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <StackPanel Background="White">
+        <Button Name="LogMessage">Message</Button>
+        <Button Name="LogWarning">Warning</Button>
+    </StackPanel>
+
+</Window>
