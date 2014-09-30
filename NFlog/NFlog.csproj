@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="INFlog.cs" />
     <Compile Include="INFlogExtensions.cs" />
+    <Compile Include="NFlogBuilder.cs" />
     <Compile Include="NFlogSerializer.cs" />
     <Compile Include="NFlog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

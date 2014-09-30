@@ -6,7 +6,18 @@ namespace NFlog.Core
 {
     public class NFlogFileTransport : INFlogTransport, IDisposable
     {
-        private StreamWriter logfile;
+        private StreamWriter logfile = null;
+
+        private string filename = Assembly.GetEntryAssembly().Location + ".nflog";
+
+        public NFlogFileTransport()
+        {
+        }
+
+        public NFlogFileTransport(string filename)
+        {
+            this.filename = filename;
+        }
 
         public void Dispose()
         {
@@ -17,16 +28,20 @@ namespace NFlog.Core
             }
         }
 
-        public NFlogFileTransport()
-        {
-            logfile = File.CreateText(Assembly.GetEntryAssembly().Location + ".nflog");
-            logfile.AutoFlush = true;
-        }
-
         public void Transport(string message)
         {
+            EnsureStreamWriter();
             logfile.WriteLine(message);
             logfile.WriteLine(NFlogMessage.MessageSeparator);
+        }
+
+        private void EnsureStreamWriter()
+        {
+            if (logfile != null)
+            {
+                logfile = File.CreateText(filename);
+                logfile.AutoFlush = true;
+            }
         }
     }
 }

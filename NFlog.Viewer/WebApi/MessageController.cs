@@ -1,5 +1,4 @@
 ﻿using System.Web.Http;
-using Autofac;
 using Caliburn.Micro;
 using NFlog.Core;
 

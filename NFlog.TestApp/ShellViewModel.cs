@@ -5,7 +5,10 @@ namespace NFlog.TestApp
 {
     public class ShellViewModel : PropertyChangedBase, IShell 
     {
-        NFlogger logger = new NFlogger();
+        NFlogger logger = 
+            new NFlogBuilder()
+                .LogMessagesUsingWebApiAt("http://localhost:12349/api/message")
+                .Build();
 
         public void LogMessage()
         {

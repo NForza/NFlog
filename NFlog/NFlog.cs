@@ -1,26 +1,11 @@
 using NFlog.Core;
+using System;
 
 namespace NFlog
 {
     public class NFlogger : INFlog
     {
-        private INFlogSerializer serializer = new NFlogSerializer();
-        private INFlogTransport transport = new NFlogHttpTransport();
-        
-        public INFlogSerializer Serializer
-        {
-            get
-            {
-                return serializer;
-            }
-        }
-        
-        public INFlogTransport Transport
-        {
-            get
-            {
-                return transport;
-            }
-        }
+        public INFlogSerializer Serializer { get; set; }
+        public INFlogTransport Transport { get; set; }
     }
 }
