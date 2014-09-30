@@ -2,17 +2,37 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 
 namespace NFlog
 {
     public class NFlogBuilder
     {
-        private INFlogSerializer serializer = new NFlogSerializer();
-        private INFlogTransport transport = new NFlogHttpTransport("http://localhost:12349/api/message");
+        private INFlogSerializer serializer;
+        private INFlogTransport transport;
+        public string url = "http://localhost:12349/api/message";
+        public string file;
+
+        public bool logAsync;
+        
 
         public NFlogger Build()
         {
-            return new NFlogger() { Serializer = serializer, Transport = transport }; 
+            INFlogTransport transport;
+
+            if (String.IsNullOrEmpty(file))
+                transport = new NFlogHttpTransport(url, logAsync);
+            else 
+                transport = new NFlogFileTransport(file, !logAsync);
+                
+            if (serializer == null)
+                serializer = new NFlogSerializer();
+
+            return new NFlogger() 
+                { 
+                    Serializer = serializer,
+                    Transport = transport
+                }; 
         }
 
         public NFlogBuilder WithSerializer(INFlogSerializer serializer)
@@ -23,13 +43,28 @@ namespace NFlog
 
         public NFlogBuilder LogMessagesUsingWebApiAt(string url)
         {
-            this.transport = new NFlogHttpTransport(url);
+            this.url = url;
             return this;
+        }
+
+        public NFlogBuilder Async
+        {
+            get
+            {
+                logAsync = true;
+                return this;
+            }
         }
 
         public NFlogBuilder LogMessagesToFile(string file)
         {
-            this.transport = new NFlogFileTransport(file);
+            this.file = file;
+            return this;
+        }
+
+        public NFlogBuilder LogMessagesToFile()
+        {
+            this.file = Assembly.GetEntryAssembly().Location + ".nflog";
             return this;
         }
     }

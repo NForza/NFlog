@@ -6,7 +6,8 @@ namespace NFlog.Core
 {
     public class NFlogFileTransport : INFlogTransport, IDisposable
     {
-        private StreamWriter logfile = null;
+        private readonly bool autoflush;
+        private StreamWriter logfile;
 
         private string filename = Assembly.GetEntryAssembly().Location + ".nflog";
 
@@ -14,8 +15,9 @@ namespace NFlog.Core
         {
         }
 
-        public NFlogFileTransport(string filename)
+        public NFlogFileTransport(string filename, bool logAsync)
         {
+            this.autoflush = !logAsync;
             this.filename = filename;
         }
 
@@ -37,10 +39,10 @@ namespace NFlog.Core
 
         private void EnsureStreamWriter()
         {
-            if (logfile != null)
+            if (logfile == null)
             {
                 logfile = File.CreateText(filename);
-                logfile.AutoFlush = true;
+                logfile.AutoFlush = autoflush;
             }
         }
     }
