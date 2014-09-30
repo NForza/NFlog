@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using Autofac;
+using Autofac.Integration.WebApi;
 using Caliburn.Micro;
 using NFlog.Viewer.WebApi;
 
@@ -24,6 +26,8 @@ namespace NFlog.Viewer
 
             containerBuilder.RegisterType<NFlogWebApi>().As<INFlogWebApi>().SingleInstance();
             containerBuilder.RegisterType<ShellViewModel>().As<IShell>().SingleInstance();
+            containerBuilder.RegisterApiControllers(Assembly.GetExecutingAssembly()).InstancePerApiRequest();
+
             Container = containerBuilder.Build();
         }
 

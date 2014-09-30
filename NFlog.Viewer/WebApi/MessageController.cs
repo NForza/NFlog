@@ -9,10 +9,6 @@ namespace NFlog.Viewer.WebApi
     {
         private readonly IEventAggregator eventAggregator;
 
-        public MessageController()
-        {
-            eventAggregator = AppBootstrapper.Container.Resolve<IEventAggregator>();
-        }
         public MessageController(IEventAggregator eventAggregator)
         {
             this.eventAggregator = eventAggregator;

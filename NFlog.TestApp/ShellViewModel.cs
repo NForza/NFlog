@@ -1,4 +1,5 @@
 using Caliburn.Micro;
+using System;
 
 namespace NFlog.TestApp
 {
@@ -16,5 +17,9 @@ namespace NFlog.TestApp
             logger.LogWarning("Be careful!");  
         }
 
+        public void LogException()
+        {
+            logger.LogException("Oops", new Exception("Wrong"));
+        }
     }
 }
