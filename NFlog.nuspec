@@ -2,18 +2,36 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>NFlog</id>
-        <version>0.2.1</version>
+        <version>0.2.3</version>
         <authors>Thomas Huijer</authors>
         <owners>NForza</owners>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>NFlog is a structured logging tool with a dedicated viewer</description>
         <copyright>NForza 2014 and beyond</copyright>
-		<dependencies>
-			<dependency id="Newtonsoft.Json" version="6.0.4" />		
-		</dependencies>
+        <dependencies>
+            <dependency id="Newtonsoft.Json" version="6.0.4" />
+        </dependencies>
     </metadata>
     <files>
         <file src="NFlog\bin\Debug\NFlog.Core.dll" target="lib\net451\NFlog.Core.dll" />
         <file src="NFlog\bin\Debug\NFlog.dll" target="lib\net451\NFlog.dll" />
-    </files>	
+        <file src="NFlog.Viewer\bin\Debug\Autofac.dll" target="tools\Autofac.dll" />
+        <file src="NFlog.Viewer\bin\Debug\Autofac.Integration.Owin.dll" target="tools\Autofac.Integration.Owin.dll" />
+        <file src="NFlog.Viewer\bin\Debug\Autofac.Integration.WebApi.dll" target="tools\Autofac.Integration.WebApi.dll" />
+        <file src="NFlog.Viewer\bin\Debug\Autofac.Integration.WebApi.Owin.dll" target="tools\Autofac.Integration.WebApi.Owin.dll" />
+        <file src="NFlog.Viewer\bin\Debug\Caliburn.Micro.dll" target="tools\Caliburn.Micro.dll" />
+        <file src="NFlog.Viewer\bin\Debug\Caliburn.Micro.Platform.dll" target="tools\Caliburn.Micro.Platform.dll" />
+        <file src="NFlog.Viewer\bin\Debug\Microsoft.Owin.dll" target="tools\Microsoft.Owin.dll" />
+        <file src="NFlog.Viewer\bin\Debug\Microsoft.Owin.Host.HttpListener.dll" target="tools\Microsoft.Owin.Host.HttpListener.dll" />
+        <file src="NFlog.Viewer\bin\Debug\Microsoft.Owin.Hosting.dll" target="tools\Microsoft.Owin.Hosting.dll" />
+        <file src="NFlog.Viewer\bin\Debug\Newtonsoft.Json.dll" target="tools\Newtonsoft.Json.dll" />
+        <file src="NFlog.Viewer\bin\Debug\NFlog.Core.dll" target="tools\NFlog.Core.dll" />
+        <file src="NFlog.Viewer\bin\Debug\NFlog.Viewer.exe" target="tools\NFlog.Viewer.exe" />
+        <file src="NFlog.Viewer\bin\Debug\NFlog.Viewer.exe.config" target="tools\NFlog.Viewer.exe.config" />
+        <file src="NFlog.Viewer\bin\Debug\Owin.dll" target="tools\Owin.dll" />
+        <file src="NFlog.Viewer\bin\Debug\System.Net.Http.Formatting.dll" target="tools\System.Net.Http.Formatting.dll" />
+        <file src="NFlog.Viewer\bin\Debug\System.Web.Http.dll" target="tools\System.Web.Http.dll" />
+        <file src="NFlog.Viewer\bin\Debug\System.Web.Http.Owin.dll" target="tools\System.Web.Http.Owin.dll" />
+        <file src="NFlog.Viewer\bin\Debug\System.Windows.Interactivity.dll" target="tools\System.Windows.Interactivity.dll" />
+    </files>
 </package>

@@ -1,7 +1,5 @@
 ﻿using NFlog.Core;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 
 namespace NFlog
@@ -9,30 +7,31 @@ namespace NFlog
     public class NFlogBuilder
     {
         private INFlogSerializer serializer;
-        private INFlogTransport transport;
         private string url = "http://localhost:12349/api/message";
         private string file;
-
         private bool logAsync;
-        
-
+       
         public NFlogger Build()
         {
-            INFlogTransport transport;
-
-            if (String.IsNullOrEmpty(file))
-                transport = new NFlogHttpTransport(url, logAsync);
-            else 
-                transport = new NFlogFileTransport(file, !logAsync);
-                
-            if (serializer == null)
-                serializer = new NFlogSerializer();
-
-            return new NFlogger() 
+            return new NFlogger
                 { 
-                    Serializer = serializer,
-                    Transport = transport
+                    Serializer = CreateSerializer(),
+                    Transport = CreateTransport()
                 }; 
+        }
+
+        private INFlogSerializer CreateSerializer()
+        {
+            if (serializer == null)
+                return new NFlogSerializer();
+            return serializer;
+        }
+
+        private INFlogTransport CreateTransport()
+        {
+            if (String.IsNullOrEmpty(file))
+                return new NFlogHttpTransport(url, logAsync);
+            return new NFlogFileTransport(file, !logAsync);
         }
 
         public NFlogBuilder WithSerializer(INFlogSerializer serializer)
