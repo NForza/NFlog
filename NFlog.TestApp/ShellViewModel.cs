@@ -12,8 +12,7 @@ namespace NFlog.TestApp
 
         NFlogger logger =
               new NFlogBuilder()
-                  .LogMessagesToFile()
-                  .Async
+                  .LogMessagesToFile()                  
                   .Build();
 
         public void LogMessage()

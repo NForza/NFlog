@@ -10,10 +10,10 @@ namespace NFlog
     {
         private INFlogSerializer serializer;
         private INFlogTransport transport;
-        public string url = "http://localhost:12349/api/message";
-        public string file;
+        private string url = "http://localhost:12349/api/message";
+        private string file;
 
-        public bool logAsync;
+        private bool logAsync;
         
 
         public NFlogger Build()

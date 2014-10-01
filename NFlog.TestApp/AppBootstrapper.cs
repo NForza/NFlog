@@ -1,9 +1,11 @@
-namespace NFlog.TestApp {
-    using System;
-    using System.Collections.Generic;
-    using Caliburn.Micro;
+using System;
+using System.Collections.Generic;
+using Caliburn.Micro;
 
-    public class AppBootstrapper : BootstrapperBase {
+namespace NFlog.TestApp 
+{
+    public class AppBootstrapper : BootstrapperBase 
+    {
         SimpleContainer container;
 
         public AppBootstrapper() {

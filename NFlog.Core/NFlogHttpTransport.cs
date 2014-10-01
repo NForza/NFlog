@@ -4,7 +4,7 @@ using System.Text;
 
 namespace NFlog.Core
 {
-    public class NFlogHttpTransport : INFlogTransport
+    internal class NFlogHttpTransport : INFlogTransport
     {
         private readonly bool logAsync;
         private readonly string url;

@@ -4,7 +4,7 @@ using System.Reflection;
 
 namespace NFlog.Core
 {
-    public class NFlogFileTransport : INFlogTransport, IDisposable
+    internal class NFlogFileTransport : INFlogTransport, IDisposable
     {
         private readonly bool autoflush;
         private StreamWriter logfile;
@@ -15,9 +15,9 @@ namespace NFlog.Core
         {
         }
 
-        public NFlogFileTransport(string filename, bool logAsync)
+        public NFlogFileTransport(string filename, bool autoflush)
         {
-            this.autoflush = !logAsync;
+            this.autoflush = autoflush;
             this.filename = filename;
         }
 
