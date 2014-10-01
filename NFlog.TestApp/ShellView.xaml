@@ -6,6 +6,7 @@
         <Button Name="LogMessage">Message</Button>
         <Button Name="LogWarning">Warning</Button>
         <Button Name="LogException">Exception</Button>
+        <Button Name="LogObject">Object</Button>
     </StackPanel>
 
 </Window>

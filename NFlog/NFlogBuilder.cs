@@ -40,7 +40,7 @@ namespace NFlog
             return this;
         }
 
-        public NFlogBuilder LogMessagesUsingWebApiAt(string url)
+        public NFlogBuilder LogUsingHttpAt(string url)
         {
             this.url = url;
             return this;
@@ -55,13 +55,13 @@ namespace NFlog
             }
         }
 
-        public NFlogBuilder LogMessagesToFile(string file)
+        public NFlogBuilder LogToFile(string file)
         {
             this.file = file;
             return this;
         }
 
-        public NFlogBuilder LogMessagesToFile()
+        public NFlogBuilder LogToFile()
         {
             this.file = Assembly.GetEntryAssembly().Location + ".nflog";
             return this;

@@ -7,7 +7,7 @@ namespace NFlog.TestApp
     {
         NFlogger logger =
             new NFlogBuilder()
-                .LogMessagesUsingWebApiAt("http://localhost:12349/api/message")
+                .LogUsingHttpAt("http://localhost:12349/api/message")
                 .Build();
 
         //NFlogger logger =
@@ -28,6 +28,11 @@ namespace NFlog.TestApp
         public void LogException()
         {
             logger.LogException("Oops", new Exception("Wrong"));
+        }
+
+        public void LogObject()
+        {
+            logger.LogObject("Oops", this);
         }
     }
 }

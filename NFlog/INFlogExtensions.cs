@@ -28,5 +28,11 @@ namespace NFlog
             NFlogMessage msg = new NFlogMessage { MessageType = MessageTypes.Exception, Message = message, Data=exception };
             Log(nflog, msg);
         }
+
+        public static void LogObject(this INFlog nflog, string message, object obj)
+        {
+            NFlogMessage msg = new NFlogMessage { MessageType = MessageTypes.Object, Message = message, Data = obj };
+            Log(nflog, msg);
+        }
     }
 }

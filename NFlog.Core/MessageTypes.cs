@@ -5,5 +5,6 @@ namespace NFlog.Core
         public const int Message = 0;
         public const int Warning = 1;
         public const int Exception = 2;
+        public const int Object = 2;
     }
 }
