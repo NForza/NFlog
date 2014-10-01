@@ -2,11 +2,21 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <StackPanel Background="White">
-        <Button Name="LogMessage">Message</Button>
-        <Button Name="LogWarning">Warning</Button>
-        <Button Name="LogException">Exception</Button>
-        <Button Name="LogObject">Object</Button>
-    </StackPanel>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Button Name="LogMessage" Grid.Row="0" Grid.Column="0">Message</Button>
+        <Button Name="LogWarning" Grid.Row="0" Grid.Column="1">Warning</Button>
+        <Button Name="LogException" Grid.Row="1" Grid.Column="0">Exception</Button>
+        <Button Name="LogObject" Grid.Row="1" Grid.Column="1">Object</Button>
+    </Grid>
 
 </Window>
