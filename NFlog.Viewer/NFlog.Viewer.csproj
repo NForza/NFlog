@@ -120,6 +120,10 @@
     <Compile Include="WebApi\MessageReceivedEvent.cs" />
     <Compile Include="WebApi\NFlogWebApi.cs" />
     <Compile Include="WebApi\Startup.cs" />
+    <Page Include="Messages.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ShellView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

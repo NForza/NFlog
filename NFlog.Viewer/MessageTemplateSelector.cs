@@ -10,7 +10,8 @@ namespace NFlog.Viewer
         static Dictionary<int, string> dataTemplates = new Dictionary<int, string>()
         {
             { MessageTypes.Message, "DefaultMessageTemplate" },
-            { MessageTypes.Warning, "WarningTemplate" }
+            { MessageTypes.Warning, "WarningTemplate" },
+            { MessageTypes.Object, "ObjectTemplate" }
         };
 
         public override DataTemplate SelectTemplate(object item, System.Windows.DependencyObject container)
