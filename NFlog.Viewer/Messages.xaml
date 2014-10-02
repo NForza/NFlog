@@ -5,6 +5,10 @@
         <StackPanel>
             <TextBlock Text="{Binding MessageType}" />
             <TextBlock Text="{Binding Message}" />
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding AppName}"/>
+                <TextBlock Margin="10,0,0,0" Text="{Binding ThreadID}"/>
+            </StackPanel>
         </StackPanel>
     </DataTemplate>
 
@@ -12,6 +16,10 @@
         <StackPanel Background="Yellow">
             <TextBlock Text="{Binding MessageType}" />
             <TextBlock Text="{Binding Message}" />
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding AppName}"/>
+                <TextBlock Margin="10,0,0,0" Text="{Binding ThreadID}"/>
+            </StackPanel>
         </StackPanel>
     </DataTemplate>
 
@@ -20,7 +28,10 @@
             <TextBlock Text="{Binding MessageType}" />
             <TextBlock Text="{Binding Message}" />
             <TextBlock Text="{Binding Data}" />
-
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding AppName}"/>
+                <TextBlock Margin="10,0,0,0" Text="{Binding ThreadID}"/>
+            </StackPanel>
         </StackPanel>
     </DataTemplate>
 

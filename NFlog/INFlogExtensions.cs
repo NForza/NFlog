@@ -13,26 +13,22 @@ namespace NFlog
 
         public static void LogMessage(this INFlog nflog, string message)
         {
-            NFlogMessage msg = new NFlogMessage { MessageType = MessageTypes.Message, Message = message };
-            Log(nflog, msg);
+            Log(nflog, new NFlogMessage { MessageType = MessageTypes.Message, Message = message });
         }
 
         public static void LogWarning(this INFlog nflog, string message)
         {
-            NFlogMessage msg = new NFlogMessage { MessageType = MessageTypes.Warning, Message = message };
-            Log(nflog, msg);
+            Log(nflog, new NFlogMessage { MessageType = MessageTypes.Warning, Message = message });
         }
 
         public static void LogException(this INFlog nflog, string message, Exception exception)
         {
-            NFlogMessage msg = new NFlogMessage { MessageType = MessageTypes.Exception, Message = message, Data=exception };
-            Log(nflog, msg);
+            Log(nflog, new NFlogMessage { MessageType = MessageTypes.Exception, Message = message, Data=exception });
         }
 
         public static void LogObject(this INFlog nflog, string message, object obj)
         {
-            NFlogMessage msg = new NFlogMessage { MessageType = MessageTypes.Object, Message = message, Data = obj };
-            Log(nflog, msg);
+            Log(nflog, new NFlogMessage { MessageType = MessageTypes.Object, Message = message, Data = obj });
         }
     }
 }

@@ -1,9 +1,17 @@
 using System;
+using System.Reflection;
+using System.Threading;
 
 namespace NFlog.Core
 {
     public class NFlogMessage
     {
+        public NFlogMessage()
+        {
+            DateTime = DateTime.Now;
+            AppName = Assembly.GetEntryAssembly().GetName().Name;
+            ThreadID = Thread.CurrentThread.ManagedThreadId;
+        }
         public const string MessageSeparator = "##NFLOG##";
         public int MessageType { get; set; }
         public string Message { get; set; }
