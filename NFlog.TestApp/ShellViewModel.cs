@@ -10,11 +10,6 @@ namespace NFlog.TestApp
                 .LogUsingHttpAt("http://localhost:12349/api/message")
                 .Build();
 
-        //NFlogger logger =
-        //      new NFlogBuilder()
-        //          .LogMessagesToFile()                  
-        //          .Build();
-
         public void LogMessage()
         {
             logger.LogMessage("Hello World");  
@@ -34,5 +29,7 @@ namespace NFlog.TestApp
         {
             logger.LogObject("Oops", this);
         }
+
+
     }
 }

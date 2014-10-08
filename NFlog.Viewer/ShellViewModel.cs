@@ -35,6 +35,8 @@ namespace NFlog.Viewer
             Messages = new ObservableCollection<NFlogMessage>( deserializer.Deserialize(File.ReadAllText(fileName)));
         }
 
+        public NFlogMessage SelectedMessage { get; set; }
+
         private ObservableCollection<NFlogMessage> messages;
         public ObservableCollection<NFlogMessage> Messages
         {
