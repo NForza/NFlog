@@ -1,4 +1,5 @@
-﻿using NFlog.Core;
+﻿using System;
+using NFlog.Core;
 
 namespace NFlog.Viewer
 {
@@ -11,6 +12,8 @@ namespace NFlog.Viewer
 
         private static bool ContainsSearchString(string p, string searchString)
         {
+            if (String.IsNullOrEmpty(searchString))
+                return true;
             return p.Contains(searchString);
         }        
     }

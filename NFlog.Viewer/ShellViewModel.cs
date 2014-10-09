@@ -1,5 +1,6 @@
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq;
 using Caliburn.Micro;
 using Microsoft.Win32;
 using NFlog.Core;
@@ -49,14 +50,15 @@ namespace NFlog.Viewer
             }
         }
 
-        private string _searchString;
+        private string searchString;
         public string SearchString
         {
-            get { return _searchString; }
+            get { return searchString; }
             set
             {
-                _searchString = value;
+                searchString = value;
                 NotifyOfPropertyChange(() => SearchString);
+                BuildShowMessages();
             }
         }
 
@@ -71,12 +73,36 @@ namespace NFlog.Viewer
             {
                 messages = value;
                 NotifyOfPropertyChange();
+                BuildShowMessages();
+            }
+        }
+
+        private void BuildShowMessages()
+        {
+            ShownMessages = 
+                new ObservableCollection<NFlogMessage>(
+                    messages.Where(m => m.MatchesSearchString(searchString)));            
+        }
+
+        private ObservableCollection<NFlogMessage> shownMessages;
+        public ObservableCollection<NFlogMessage> ShownMessages
+        {
+            get
+            {
+                return shownMessages;
+            }
+            set
+            {
+                shownMessages = value;
+                NotifyOfPropertyChange();
             }
         }
 
         public void Handle(MessageReceivedEvent msg)
         {
             Messages.Add(msg.Message);
+            if (msg.Message.MatchesSearchString(SearchString))
+                ShownMessages.Add(msg.Message);
         }
     }
 }
