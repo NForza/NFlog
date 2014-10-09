@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30626.0
+VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NFlog", "NFlog\NFlog.csproj", "{F6F61371-17C2-4101-BE9C-ADA10B60989F}"
 EndProject
@@ -17,6 +17,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NFlog.Core", "NFlog.Core\NFlog.Core.csproj", "{E92BC8F7-4599-41E2-8D89-24A221D08B6C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NFlog.TestApp", "NFlog.TestApp\NFlog.TestApp.csproj", "{D0988440-BA41-4201-B155-285775EFA137}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NuSpec", "NuSpec", "{70669CC6-AB23-4906-91DD-6F614466B9DB}"
+	ProjectSection(SolutionItems) = preProject
+		NFlog.nuspec = NFlog.nuspec
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

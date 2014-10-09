@@ -1,9 +1,9 @@
 using System.Collections.ObjectModel;
+using System.IO;
 using Caliburn.Micro;
 using Microsoft.Win32;
 using NFlog.Core;
-using System.Collections.Generic;
-using System.IO;
+using NFlog.Viewer.Events;
 using NFlog.Viewer.WebApi;
 
 namespace NFlog.Viewer
@@ -15,6 +15,8 @@ namespace NFlog.Viewer
 
         public ShellViewModel(INFlogWebApi webapi, IEventAggregator eventAggregator)
         {
+            //webapi is injected as a reference to make sure it gets created
+            this.eventAggregator = eventAggregator;
             eventAggregator.Subscribe(this);
             Messages = new ObservableCollection<NFlogMessage>();
         }
@@ -32,10 +34,20 @@ namespace NFlog.Viewer
         public void RefreshFile()
         {
             NFlogDeserializer deserializer = new NFlogDeserializer();
-            Messages = new ObservableCollection<NFlogMessage>( deserializer.Deserialize(File.ReadAllText(fileName)));
+            Messages = new ObservableCollection<NFlogMessage>(deserializer.Deserialize(File.ReadAllText(fileName)));
         }
 
-        public NFlogMessage SelectedMessage { get; set; }
+        private NFlogMessage selectedMessage;
+        public NFlogMessage SelectedMessage
+        {
+            get { return selectedMessage; }
+            set
+            {
+                selectedMessage = value;
+                NotifyOfPropertyChange(() => SelectedMessage);
+                eventAggregator.PublishOnUIThreadAsync( new SelectedMessageChangedEvent(){ Message=selectedMessage} );
+            } 
+        }       
 
         private ObservableCollection<NFlogMessage> messages;
         public ObservableCollection<NFlogMessage> Messages
@@ -53,7 +65,7 @@ namespace NFlog.Viewer
 
         public void Handle(MessageReceivedEvent msg)
         {
-           Messages.Add( msg.Message );           
+            Messages.Add(msg.Message);
         }
     }
 }

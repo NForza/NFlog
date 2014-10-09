@@ -1,6 +1,6 @@
 ﻿using NFlog.Core;
 
-namespace NFlog.Viewer.WebApi
+namespace NFlog.Viewer.Events
 {
     public class MessageReceivedEvent
     {

@@ -1,6 +1,7 @@
 <Window x:Class="NFlog.Viewer.ShellView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:app="clr-namespace:NFlog.Viewer"
+        xmlns:toolkit="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Window.Resources>
         <app:MessageTemplateSelector x:Key="selector" />
@@ -11,7 +12,20 @@
             <Button Name="LoadFile" Content="Open File"/>
             <Button Name="RefreshFile" Content="Refresh File"/>
         </StackPanel>
-        <ListBox Name="Messages" ItemTemplateSelector="{StaticResource selector}"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <ListBox Name="Messages" ItemTemplateSelector="{StaticResource selector}"/>
+            <GridSplitter ResizeDirection="Columns" Grid.Column="1" Width="5" HorizontalAlignment="Stretch" />
+            <Grid Grid.Column="2">
+                <toolkit:PropertyGrid IsReadOnly="True" ShowSearchBox="False" IsCategorized="False" ShowSortOptions="False" ShowTitle="False" SelectedObject="{Binding SelectedMessage}">                    
+                    
+                </toolkit:PropertyGrid>
+            </Grid>
+        </Grid>
     </StackPanel>
 
 </Window>

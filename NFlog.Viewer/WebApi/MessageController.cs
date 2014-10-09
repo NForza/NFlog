@@ -1,6 +1,7 @@
 ﻿using System.Web.Http;
 using Caliburn.Micro;
 using NFlog.Core;
+using NFlog.Viewer.Events;
 
 namespace NFlog.Viewer.WebApi
 {

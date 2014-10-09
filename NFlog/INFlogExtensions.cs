@@ -1,6 +1,6 @@
+using System;
 using System.Diagnostics;
 using NFlog.Core;
-using System;
 
 namespace NFlog
 {

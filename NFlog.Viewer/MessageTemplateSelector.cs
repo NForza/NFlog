@@ -1,7 +1,7 @@
-﻿using NFlog.Core;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using NFlog.Core;
 
 namespace NFlog.Viewer
 {

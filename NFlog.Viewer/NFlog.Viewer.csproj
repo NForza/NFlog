@@ -100,6 +100,24 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="Xceed.Wpf.AvalonDock">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.2.1\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.2.1\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.2.1\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.2.1\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.DataGrid">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.2.1\lib\net40\Xceed.Wpf.DataGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.2.1\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -111,6 +129,7 @@
     <Compile Include="MessageTemplateSelector.cs" />
     <Compile Include="NFlogDeserializer.cs" />
     <Compile Include="NFlogMessageExtensions.cs" />
+    <Compile Include="Events\SelectedMessageChangedEvent.cs" />
     <Compile Include="ShellViewModel.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
@@ -118,7 +137,7 @@
     </Compile>
     <Compile Include="WebApi\INFlogWebApi.cs" />
     <Compile Include="WebApi\MessageController.cs" />
-    <Compile Include="WebApi\MessageReceivedEvent.cs" />
+    <Compile Include="Events\MessageReceivedEvent.cs" />
     <Compile Include="WebApi\NFlogWebApi.cs" />
     <Compile Include="WebApi\Startup.cs" />
     <Page Include="Messages.xaml">
