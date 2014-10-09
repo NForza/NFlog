@@ -8,15 +8,21 @@
     </Window.Resources>
 
     <StackPanel Background="White">
-        <StackPanel Orientation="Horizontal">
-            <Button Name="LoadFile" Content="Open File"/>
-            <Button Name="RefreshFile" Content="Refresh File"/>
-        </StackPanel>
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition />
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button Name="LoadFile" Content="Open File"/>
+            <Button Grid.Column="1" Name="RefreshFile" Content="Refresh File"/>
+            <TextBox Grid.Column="2" Name="SearchString"/>
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
                 <ColumnDefinition Width="10"/>
-                <ColumnDefinition />
+                <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
             <ListBox Name="Messages" ItemTemplateSelector="{StaticResource selector}"/>
             <GridSplitter ResizeDirection="Columns" Grid.Column="1" Width="5" HorizontalAlignment="Stretch" />

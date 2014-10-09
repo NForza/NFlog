@@ -126,6 +126,9 @@
     </ApplicationDefinition>
     <Compile Include="AppBootstrapper.cs" />
     <Compile Include="IShell.cs" />
+    <Compile Include="MessageDetails.xaml.cs">
+      <DependentUpon>MessageDetails.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MessageTemplateSelector.cs" />
     <Compile Include="NFlogDeserializer.cs" />
     <Compile Include="NFlogMessageExtensions.cs" />
@@ -140,6 +143,10 @@
     <Compile Include="Events\MessageReceivedEvent.cs" />
     <Compile Include="WebApi\NFlogWebApi.cs" />
     <Compile Include="WebApi\Startup.cs" />
+    <Page Include="MessageDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Messages.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

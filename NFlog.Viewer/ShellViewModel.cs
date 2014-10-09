@@ -45,9 +45,20 @@ namespace NFlog.Viewer
             {
                 selectedMessage = value;
                 NotifyOfPropertyChange(() => SelectedMessage);
-                eventAggregator.PublishOnUIThreadAsync( new SelectedMessageChangedEvent(){ Message=selectedMessage} );
-            } 
-        }       
+                eventAggregator.PublishOnUIThreadAsync(new SelectedMessageChangedEvent() { Message = selectedMessage });
+            }
+        }
+
+        private string _searchString;
+        public string SearchString
+        {
+            get { return _searchString; }
+            set
+            {
+                _searchString = value;
+                NotifyOfPropertyChange(() => SearchString);
+            }
+        }
 
         private ObservableCollection<NFlogMessage> messages;
         public ObservableCollection<NFlogMessage> Messages
