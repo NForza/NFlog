@@ -14,7 +14,7 @@ namespace NFlog.Viewer
             { MessageTypes.Object, "ObjectTemplate" }
         };
 
-        public override DataTemplate SelectTemplate(object item, System.Windows.DependencyObject container)
+        public override DataTemplate SelectTemplate(object item, DependencyObject container)
         {
             var message = item as NFlogMessage;
             if (message == null)
@@ -22,7 +22,7 @@ namespace NFlog.Viewer
             string templateName;
             if (dataTemplates.TryGetValue(message.MessageType, out templateName))
             {
-                return Application.Current.Resources[templateName] as DataTemplate;                
+                return Application.Current.Resources[templateName] as DataTemplate;
             }
             return null;
         }

@@ -14,7 +14,7 @@ namespace NFlog.Viewer.WebApi
             this.eventAggregator = eventAggregator;
         }
 
-        public void Post([FromBody]NFlogMessage message)
+        public void Post([FromBody]NFlogViewerMessage message)
         {
            eventAggregator.PublishOnUIThread(new MessageReceivedEvent(message));
         }

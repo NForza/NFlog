@@ -19,7 +19,7 @@ namespace NFlog.Viewer
             //webapi is injected as a reference to make sure it gets created
             this.eventAggregator = eventAggregator;
             eventAggregator.Subscribe(this);
-            Messages = new ObservableCollection<NFlogMessage>();
+            Messages = new ObservableCollection<NFlogViewerMessage>();
         }
 
         public void LoadFile()
@@ -35,18 +35,18 @@ namespace NFlog.Viewer
         public void RefreshFile()
         {
             NFlogDeserializer deserializer = new NFlogDeserializer();
-            Messages = new ObservableCollection<NFlogMessage>(deserializer.Deserialize(File.ReadAllText(fileName)));
+            Messages = new ObservableCollection<NFlogViewerMessage>(deserializer.Deserialize(File.ReadAllText(fileName)).Cast<NFlogViewerMessage>());
         }
 
-        private NFlogMessage selectedMessage;
-        public NFlogMessage SelectedMessage
+        private NFlogViewerMessage selectedShownMessage;
+        public NFlogViewerMessage SelectedShownMessage
         {
-            get { return selectedMessage; }
+            get { return selectedShownMessage; }
             set
             {
-                selectedMessage = value;
-                NotifyOfPropertyChange(() => SelectedMessage);
-                eventAggregator.PublishOnUIThreadAsync(new SelectedMessageChangedEvent() { Message = selectedMessage });
+                selectedShownMessage = value;
+                NotifyOfPropertyChange(() => SelectedShownMessage);
+                eventAggregator.PublishOnUIThreadAsync(new SelectedMessageChangedEvent() { Message = selectedShownMessage });
             }
         }
 
@@ -62,8 +62,8 @@ namespace NFlog.Viewer
             }
         }
 
-        private ObservableCollection<NFlogMessage> messages;
-        public ObservableCollection<NFlogMessage> Messages
+        private ObservableCollection<NFlogViewerMessage> messages;
+        public ObservableCollection<NFlogViewerMessage> Messages
         {
             get
             {
@@ -80,12 +80,12 @@ namespace NFlog.Viewer
         private void BuildShowMessages()
         {
             ShownMessages = 
-                new ObservableCollection<NFlogMessage>(
+                new ObservableCollection<NFlogViewerMessage>(
                     messages.Where(m => m.MatchesSearchString(searchString)));            
         }
 
-        private ObservableCollection<NFlogMessage> shownMessages;
-        public ObservableCollection<NFlogMessage> ShownMessages
+        private ObservableCollection<NFlogViewerMessage> shownMessages;
+        public ObservableCollection<NFlogViewerMessage> ShownMessages
         {
             get
             {

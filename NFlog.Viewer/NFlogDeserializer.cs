@@ -10,7 +10,7 @@ namespace NFlog.Viewer
     {
         public IEnumerable<NFlogMessage> Deserialize(string contents)
         {
-            List<NFlogMessage> result = new List<NFlogMessage>();
+            List<NFlogViewerMessage> result = new List<NFlogViewerMessage>();
             List<string> lines = contents.Split('\r', '\n').ToList();
 
             while (lines.Count > 0)
@@ -21,7 +21,7 @@ namespace NFlog.Viewer
                 var messageLines = lines.Take(index);
                 string message = String.Join("\r", messageLines);
                 if (!String.IsNullOrEmpty(message))
-                    result.Add(JsonConvert.DeserializeObject<NFlogMessage>(message));
+                    result.Add(JsonConvert.DeserializeObject<NFlogViewerMessage>(message));
                 lines.RemoveRange(0, index + 1);
             }
             return result;

@@ -4,11 +4,11 @@ namespace NFlog.Viewer.Events
 {
     public class MessageReceivedEvent
     {
-        public MessageReceivedEvent(NFlogMessage message)
+        public MessageReceivedEvent(NFlogViewerMessage message)
         {
             Message = message;
         }
 
-        public NFlogMessage Message { get; set; }
+        public NFlogViewerMessage Message { get; set; }
     }
 }

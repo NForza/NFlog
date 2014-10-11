@@ -4,6 +4,6 @@ namespace NFlog.Viewer.Events
 {
     class SelectedMessageChangedEvent
     {
-        public NFlogMessage Message { get; set; }
+        public NFlogViewerMessage Message { get; set; }
     }
 }

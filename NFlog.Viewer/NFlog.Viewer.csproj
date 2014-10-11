@@ -133,6 +133,7 @@
     <Compile Include="NFlogDeserializer.cs" />
     <Compile Include="NFlogMessageExtensions.cs" />
     <Compile Include="Events\SelectedMessageChangedEvent.cs" />
+    <Compile Include="NFlogViewerMessage.cs" />
     <Compile Include="ShellViewModel.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>

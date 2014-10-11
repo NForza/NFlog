@@ -27,9 +27,13 @@
             <ListBox Name="ShownMessages" ItemTemplateSelector="{StaticResource selector}"/>
             <GridSplitter ResizeDirection="Columns" Grid.Column="1" Width="5" HorizontalAlignment="Stretch" />
             <Grid Grid.Column="2">
-                <toolkit:PropertyGrid IsReadOnly="True" ShowSearchBox="False" IsCategorized="False" ShowSortOptions="False" ShowTitle="False" SelectedObject="{Binding SelectedMessage}">                    
-                    
-                </toolkit:PropertyGrid>
+                <toolkit:PropertyGrid 
+                    IsReadOnly="True" 
+                    ShowSearchBox="False" 
+                    IsCategorized="False" 
+                    ShowSortOptions="False" 
+                    ShowTitle="False" 
+                    SelectedObject="{Binding SelectedShownMessage}" />
             </Grid>
         </Grid>
     </StackPanel>
