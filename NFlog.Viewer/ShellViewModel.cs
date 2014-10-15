@@ -81,7 +81,22 @@ namespace NFlog.Viewer
         {
             ShownMessages = 
                 new ObservableCollection<NFlogViewerMessage>(
-                    messages.Where(m => m.MatchesSearchString(searchString)));            
+                    messages.Where(m => m.MatchesSearchString(searchString)));
+            BuildIndentLevel(ShownMessages);
+        }
+
+        private void BuildIndentLevel(ObservableCollection<NFlogViewerMessage> ShownMessages)
+        {
+            int indentLevel = 0;           
+            ShownMessages.ToList().ForEach(
+                msg =>
+                {
+                    if (msg.MessageType == MessageTypes.ExitMethod && indentLevel > 0)
+                        indentLevel -= 1;
+                    msg.IndentLevel = indentLevel;
+                    if (msg.MessageType == MessageTypes.EnterMethod)
+                        indentLevel += 1;
+                });
         }
 
         private ObservableCollection<NFlogViewerMessage> shownMessages;
@@ -102,7 +117,10 @@ namespace NFlog.Viewer
         {
             Messages.Add(msg.Message);
             if (msg.Message.MatchesSearchString(SearchString))
+            {
                 ShownMessages.Add(msg.Message);
+                BuildIndentLevel(ShownMessages);                
+            }
         }
     }
 }

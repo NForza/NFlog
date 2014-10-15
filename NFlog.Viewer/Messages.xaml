@@ -1,24 +1,25 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:app="clr-namespace:NFlog.Viewer"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-
+    
+    <app:IndentLevelConverter x:Key="indentLevelConverter"/>
   
     <DataTemplate x:Key="DefaultMessageTemplate">
-        <StackPanel>
+        <StackPanel Margin="{Binding IndentLevel, Converter={StaticResource indentLevelConverter}}" >
              <TextBlock Text="{Binding Message}" />
             <app:MessageDetails />
         </StackPanel>
     </DataTemplate>
 
     <DataTemplate x:Key="WarningTemplate">
-        <StackPanel Background="Yellow">
+        <StackPanel Margin="{Binding IndentLevel, Converter={StaticResource indentLevelConverter}}" Background="Yellow">
             <TextBlock Text="{Binding Message}" />
             <app:MessageDetails />
         </StackPanel>
     </DataTemplate>
 
     <DataTemplate x:Key="ObjectTemplate">
-        <StackPanel>
+        <StackPanel Margin="{Binding IndentLevel, Converter={StaticResource indentLevelConverter}}" >
             <TextBlock Text="{Binding Message}" />
             <TextBlock Text="{Binding Data}" />
             <app:MessageDetails />

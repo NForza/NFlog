@@ -6,6 +6,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <StackPanel Orientation="Horizontal">
+        <TextBlock Text="{Binding IndentLevel}"/>
         <TextBlock Text="{Binding AppName}"/>
         <TextBlock Margin="10,0,0,0" Text="{Binding ThreadID}"/>
     </StackPanel>

@@ -125,10 +125,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AppBootstrapper.cs" />
+    <Compile Include="IndentLevelConverter.cs" />
     <Compile Include="IShell.cs" />
-    <Compile Include="MessageDetails.xaml.cs">
-      <DependentUpon>MessageDetails.xaml</DependentUpon>
-    </Compile>
     <Compile Include="MessageTemplateSelector.cs" />
     <Compile Include="NFlogDeserializer.cs" />
     <Compile Include="NFlogMessageExtensions.cs" />

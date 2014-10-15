@@ -3,13 +3,13 @@
              xmlns:app="clr-namespace:NFlog.Viewer" 
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Application.Resources>
-        <ResourceDictionary>
+        <ResourceDictionary>            
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Messages.xaml" />
                 <ResourceDictionary>
                     <app:AppBootstrapper x:Key="bootstrapper" />    
                 </ResourceDictionary>
-            </ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary.MergedDictionaries>            
         </ResourceDictionary>
     </Application.Resources>
 </Application>

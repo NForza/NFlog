@@ -26,7 +26,7 @@ namespace NFlog.Viewer
 
             containerBuilder.RegisterType<NFlogWebApi>().As<INFlogWebApi>().SingleInstance();
             containerBuilder.RegisterType<ShellViewModel>().As<IShell>().SingleInstance();
-            containerBuilder.RegisterApiControllers(Assembly.GetExecutingAssembly()).InstancePerApiRequest();
+            containerBuilder.RegisterApiControllers(Assembly.GetExecutingAssembly()).InstancePerRequest();
 
             Container = containerBuilder.Build();
         }
