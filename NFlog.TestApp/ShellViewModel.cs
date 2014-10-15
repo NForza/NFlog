@@ -30,6 +30,16 @@ namespace NFlog.TestApp
             logger.LogObject("Oops", this);
         }
 
+        public void EnterMethod()
+        {
+            logger.EnterMethod("DoSomething");
+        }
+
+        public void ExitMethod()
+        {
+            logger.ExitMethod("DoSomething");
+        }
+
 
     }
 }

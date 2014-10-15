@@ -17,6 +17,8 @@
         <Button Name="LogWarning" Grid.Row="0" Grid.Column="1">Warning</Button>
         <Button Name="LogException" Grid.Row="1" Grid.Column="0">Exception</Button>
         <Button Name="LogObject" Grid.Row="1" Grid.Column="1">Object</Button>
+        <Button Name="EnterMethod" Grid.Row="2" Grid.Column="0">EnterMethod</Button>
+        <Button Name="ExitMethod" Grid.Row="2" Grid.Column="1">ExitMethod</Button>
     </Grid>
 
 </Window>

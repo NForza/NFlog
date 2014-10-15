@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using NFlog.Core;
 
 namespace NFlog
@@ -49,5 +50,20 @@ namespace NFlog
         {
             nflog.Log(new NFlogMessage { MessageType = MessageTypes.Object, Message = message, Data = obj });
         }
+
+        [Conditional("TRACE")]
+        [Conditional("NFLOG")]
+        public static void EnterMethod(this INFlog nflog, [CallerMemberName] string memberName = "", [CallerFilePath] string callerFilePath = "", [CallerLineNumber] int callerLineNumber = 0)
+        {
+            nflog.Log(new NFlogMessage { MessageType = MessageTypes.EnterMethod, Message = memberName, Data = callerFilePath + ": line " + callerLineNumber });
+        }
+
+        [Conditional("TRACE")]
+        [Conditional("NFLOG")]
+        public static void ExitMethod(this INFlog nflog, [CallerMemberName] string memberName = "", [CallerFilePath] string callerFilePath = "", [CallerLineNumber] int callerLineNumber = 0)
+        {
+            nflog.Log(new NFlogMessage { MessageType = MessageTypes.ExitMethod, Message = memberName, Data = callerFilePath + ": line " + callerLineNumber });
+        }
+
     }
 }

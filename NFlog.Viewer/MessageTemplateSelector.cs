@@ -11,7 +11,9 @@ namespace NFlog.Viewer
         {
             { MessageTypes.Message, "DefaultMessageTemplate" },
             { MessageTypes.Warning, "WarningTemplate" },
-            { MessageTypes.Object, "ObjectTemplate" }
+            { MessageTypes.Object, "ObjectTemplate" },
+            { MessageTypes.EnterMethod, "DefaultMessageTemplate" },
+            { MessageTypes.ExitMethod, "DefaultMessageTemplate" }
         };
 
         public override DataTemplate SelectTemplate(object item, DependencyObject container)

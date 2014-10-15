@@ -5,15 +5,13 @@
   
     <DataTemplate x:Key="DefaultMessageTemplate">
         <StackPanel>
-            <TextBlock Text="{Binding MessageType}" />
-            <TextBlock Text="{Binding Message}" />
+             <TextBlock Text="{Binding Message}" />
             <app:MessageDetails />
         </StackPanel>
     </DataTemplate>
 
     <DataTemplate x:Key="WarningTemplate">
         <StackPanel Background="Yellow">
-            <TextBlock Text="{Binding MessageType}" />
             <TextBlock Text="{Binding Message}" />
             <app:MessageDetails />
         </StackPanel>
@@ -21,7 +19,6 @@
 
     <DataTemplate x:Key="ObjectTemplate">
         <StackPanel>
-            <TextBlock Text="{Binding MessageType}" />
             <TextBlock Text="{Binding Message}" />
             <TextBlock Text="{Binding Data}" />
             <app:MessageDetails />

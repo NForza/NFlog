@@ -15,6 +15,19 @@ namespace NFlog.Viewer
             if (String.IsNullOrEmpty(searchString))
                 return true;
             return p.Contains(searchString);
-        }        
+        }
+
+        public static int IndentLevelAdjustment(this NFlogMessage message)
+        {
+            switch (message.MessageType)
+            {
+                case MessageTypes.EnterMethod:
+                    return 1;
+                case MessageTypes.ExitMethod:
+                    return -1;
+                default:
+                    return 0;
+            }
+        }    
     }
 }
