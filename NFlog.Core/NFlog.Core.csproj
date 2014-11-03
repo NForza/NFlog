@@ -56,6 +56,7 @@
     <Compile Include="INFlogTransport.cs" />
     <Compile Include="MessageTypes.cs" />
     <Compile Include="NFlogHttpTransport.cs" />
+    <Compile Include="NFlogInMemoryTransport.cs" />
     <Compile Include="NFlogMessage.cs" />
     <Compile Include="NFlogFileTransport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

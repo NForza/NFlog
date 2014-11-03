@@ -19,6 +19,7 @@
         <Button Name="LogObject" Grid.Row="1" Grid.Column="1">Object</Button>
         <Button Name="EnterMethod" Grid.Row="2" Grid.Column="0">EnterMethod</Button>
         <Button Name="ExitMethod" Grid.Row="2" Grid.Column="1">ExitMethod</Button>
+        <ListBox Grid.Row="3" Grid.ColumnSpan="2" Name="InMemoryMessages"/>
     </Grid>
 
 </Window>

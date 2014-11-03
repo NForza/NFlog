@@ -1,23 +1,39 @@
+using System.Collections.Generic;
 using Caliburn.Micro;
 using System;
+using System.Collections.ObjectModel;
 
 namespace NFlog.TestApp
 {
-    public class ShellViewModel : PropertyChangedBase, IShell 
+    public class ShellViewModel : PropertyChangedBase, IShell
     {
-        NFlogger logger =
-            new NFlogBuilder()
-                .LogUsingHttpAt("http://localhost:12349/api/message")
-                .Build();
+
+        private NFlogger logger;
+
+        public ShellViewModel()
+        {
+            InMemoryMessages = new ObservableCollection<string>();
+            logger =
+               new NFlogBuilder()
+                   .LogInMemory(AddMessage)
+                   .Build();
+        }
+
+        private void AddMessage(string s)
+        {
+            InMemoryMessages.Add(s);
+        }
+
+        public ObservableCollection<string> InMemoryMessages { get; set; }
 
         public void LogMessage()
         {
-            logger.LogMessage("Hello World");  
+            logger.LogMessage("Hello World");
         }
 
         public void LogWarning()
         {
-            logger.LogWarning("Be careful!");  
+            logger.LogWarning("Be careful!");
         }
 
         public void LogException()

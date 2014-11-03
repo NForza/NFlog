@@ -10,6 +10,7 @@ namespace NFlog
         private string url = "http://localhost:12349/api/message";
         private string file;
         private bool logAsync;
+        private Action<string> onLogMessageReceived;
        
         public NFlogger Build()
         {
@@ -29,8 +30,12 @@ namespace NFlog
 
         private INFlogTransport CreateTransport()
         {
-            if (String.IsNullOrEmpty(file))
+            if (!String.IsNullOrEmpty(file))
                 return new NFlogHttpTransport(url, logAsync);
+
+            if (onLogMessageReceived != null)
+                return new NFlogInMemoryTransport(onLogMessageReceived);
+
             return new NFlogFileTransport(file, !logAsync);
         }
 
@@ -43,6 +48,12 @@ namespace NFlog
         public NFlogBuilder LogUsingHttpAt(string url)
         {
             this.url = url;
+            return this;
+        }
+
+        public NFlogBuilder LogInMemory(Action<string> onLogMessageReceived)
+        {
+            this.onLogMessageReceived = onLogMessageReceived;
             return this;
         }
 
