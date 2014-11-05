@@ -1,17 +1,18 @@
-﻿using NFlog.Core;
+﻿using System.Collections.Generic;
+using NFlog.Core;
 using System;
 using System.Reflection;
 
 namespace NFlog
 {
     public class NFlogBuilder
-    {
+    {        
         private INFlogSerializer serializer;
         private string url = "http://localhost:12349/api/message";
         private string file;
         private bool logAsync;
         private Action<string> onLogMessageReceived;
-       
+
         public NFlogger Build()
         {
             return new NFlogger
@@ -34,7 +35,7 @@ namespace NFlog
                 return new NFlogHttpTransport(url, logAsync);
 
             if (onLogMessageReceived != null)
-                return new NFlogInMemoryTransport(onLogMessageReceived);
+                return new NFlogInProcessTransport(onLogMessageReceived);
 
             return new NFlogFileTransport(file, !logAsync);
         }
@@ -74,7 +75,7 @@ namespace NFlog
 
         public NFlogBuilder LogToFile()
         {
-            this.file = Assembly.GetEntryAssembly().Location + ".nflog";
+            file = Assembly.GetEntryAssembly().Location + ".nflog";
             return this;
         }
     }

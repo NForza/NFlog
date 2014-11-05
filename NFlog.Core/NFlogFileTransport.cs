@@ -10,11 +10,7 @@ namespace NFlog.Core
         private StreamWriter logfile;
 
         private string filename = Assembly.GetEntryAssembly().Location + ".nflog";
-
-        public NFlogFileTransport()
-        {
-        }
-
+       
         public NFlogFileTransport(string filename, bool autoflush)
         {
             this.autoflush = autoflush;

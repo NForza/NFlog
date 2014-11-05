@@ -8,11 +8,11 @@ namespace NFlog.Core
     {
         private readonly bool logAsync;
         private readonly string url;
-        HttpClient client = new HttpClient();
+        private readonly HttpClient client = new HttpClient();
 
         public NFlogHttpTransport(string url, bool logAsync)
         {
-            logAsync = logAsync;
+            this.logAsync = logAsync;
             this.url = url;
         }
 
@@ -27,7 +27,6 @@ namespace NFlog.Core
             else
                 client.PostAsync(url,
                     new StringContent(message, Encoding.UTF8, "application/json")).Wait();
-
         }
     }
 }
