@@ -7,15 +7,6 @@ namespace NFlog
 {
     public static class INFlogExtensions
     {
-        public static void Log(this INFlog nflog, NFlogMessage msg)
-        {
-            if (nflog.Enabled)
-            {
-                string serializedMessage = nflog.Serializer.Serialize(msg);
-                nflog.Transport.Transport(serializedMessage);                
-            }
-        }
-
         [Conditional("TRACE")]
         [Conditional("NFLOG")]
         public static void LogMessage(this INFlog nflog, string message)

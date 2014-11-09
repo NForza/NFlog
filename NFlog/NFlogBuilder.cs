@@ -1,82 +1,83 @@
 ﻿using System.Collections.Generic;
 using NFlog.Core;
 using System;
+using System.Linq;
 using System.Reflection;
 
 namespace NFlog
 {
-    public class NFlogBuilder
-    {        
-        private INFlogSerializer serializer;
-        private string url = "http://localhost:12349/api/message";
-        private string file;
+    public class NFlogDestinationBuilder
+    {
         private bool logAsync;
-        private Action<string> onLogMessageReceived;
 
-        public NFlogger Build()
+        public NFlogger Build(NFlogger next)
         {
             return new NFlogger
-                { 
-                    Serializer = CreateSerializer(),
-                    Transport = CreateTransport()
-                }; 
+            {
+                Serializer = CreateSerializer(),
+                Transport = CreateTransport(),
+                Next = next
+            };
         }
 
         private INFlogSerializer CreateSerializer()
         {
-            if (serializer == null)
-                return new NFlogSerializer();
-            return serializer;
-        }
+            return new NFlogSerializer();
+        }  
 
         private INFlogTransport CreateTransport()
         {
-            if (!String.IsNullOrEmpty(file))
-                return new NFlogHttpTransport(url, logAsync);
+            if (!String.IsNullOrEmpty(WebApiUrl))
+                return new NFlogHttpTransport(WebApiUrl, logAsync);
 
-            if (onLogMessageReceived != null)
-                return new NFlogInProcessTransport(onLogMessageReceived);
+            if (InProcessAction != null)
+                return new NFlogInProcessTransport(InProcessAction);
 
-            return new NFlogFileTransport(file, !logAsync);
+            return new NFlogFileTransport(File, !logAsync);
         }
 
-        public NFlogBuilder WithSerializer(INFlogSerializer serializer)
-        {
-            this.serializer = serializer;
-            return this;
-        }
+       
+        public string WebApiUrl { get; set; }
+
+        public Action<string> InProcessAction { get; set; }
+
+        public string File { get; set; }
+    }
+
+    public class NFlogBuilder
+    {
+        List<NFlogDestinationBuilder> destionationBuilders = new List<NFlogDestinationBuilder>();
 
         public NFlogBuilder LogUsingHttpAt(string url)
         {
-            this.url = url;
+            destionationBuilders.Add(new NFlogDestinationBuilder() { WebApiUrl = url });
             return this;
         }
 
         public NFlogBuilder LogInMemory(Action<string> onLogMessageReceived)
         {
-            this.onLogMessageReceived = onLogMessageReceived;
+            destionationBuilders.Add(new NFlogDestinationBuilder() { InProcessAction = onLogMessageReceived });
             return this;
-        }
-
-        public NFlogBuilder Async
-        {
-            get
-            {
-                logAsync = true;
-                return this;
-            }
         }
 
         public NFlogBuilder LogToFile(string file)
         {
-            this.file = file;
+            destionationBuilders.Add(new NFlogDestinationBuilder() { File = file });
             return this;
         }
 
         public NFlogBuilder LogToFile()
         {
-            file = Assembly.GetEntryAssembly().Location + ".nflog";
+            destionationBuilders.Add( new NFlogDestinationBuilder() { File = Assembly.GetEntryAssembly().Location + ".nflog"});
             return this;
+        }
+
+        public NFlogger Build()
+        {
+            NFlogger next = null;
+            foreach (var item in destionationBuilders.Reverse<NFlogDestinationBuilder>())
+                next = item.Build(next);
+            return next;
         }
     }
 }

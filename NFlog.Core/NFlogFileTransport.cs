@@ -26,7 +26,7 @@ namespace NFlog.Core
             }
         }
 
-        public void Transport(string message)
+        public void Log(string message)
         {
             EnsureStreamWriter();
             logfile.WriteLine(message);

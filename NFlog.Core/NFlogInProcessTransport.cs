@@ -13,7 +13,7 @@ namespace NFlog.Core
             this.isAsync = isAsync;
         }
 
-        public void Transport(string message)
+        public void Log(string message)
         {
             if (isAsync)
                 onLogMessageRecieved.BeginInvoke(message, null, null);

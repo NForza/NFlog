@@ -16,7 +16,7 @@ namespace NFlog.Core
             this.url = url;
         }
 
-        public void Transport(string message)
+        public void Log(string message)
         {
             if (logAsync)
             {
