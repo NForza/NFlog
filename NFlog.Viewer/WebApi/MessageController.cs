@@ -1,22 +1,22 @@
-﻿using System.Web.Http;
-using Caliburn.Micro;
-using NFlog.Core;
-using NFlog.Viewer.Events;
+﻿using System;
+using System.Web.Http;
 
 namespace NFlog.Viewer.WebApi
 {
     public class MessageController : ApiController
     {
-        private readonly IEventAggregator eventAggregator;
+        private readonly Action<NFlogViewerMessage> messageReceived = delegate { };
 
-        public MessageController(IEventAggregator eventAggregator)
+        public MessageController(Action<NFlogViewerMessage> messageReceived)
         {
-            this.eventAggregator = eventAggregator;
+            this.messageReceived = messageReceived;
         }
 
         public void Post([FromBody]NFlogViewerMessage message)
         {
-           eventAggregator.PublishOnUIThread(new MessageReceivedEvent(message));
+            var handler = messageReceived;
+            if (handler != null)
+                handler(message);
         }
     }
 }

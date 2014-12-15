@@ -1,6 +1,8 @@
+using System;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Windows.Threading;
 using Caliburn.Micro;
 using Microsoft.Win32;
 using NFlog.Core;
@@ -9,7 +11,7 @@ using NFlog.Viewer.WebApi;
 
 namespace NFlog.Viewer
 {
-    public class ShellViewModel : PropertyChangedBase, IShell, IHandle<MessageReceivedEvent>
+    public class ShellViewModel : PropertyChangedBase, IShell
     {
         private readonly IEventAggregator eventAggregator;
         private string fileName;
@@ -20,6 +22,7 @@ namespace NFlog.Viewer
             this.eventAggregator = eventAggregator;
             eventAggregator.Subscribe(this);
             Messages = new ObservableCollection<NFlogViewerMessage>();
+            MessageReceived = m => Handle(m);
         }
 
         public void LoadFile()
@@ -113,14 +116,20 @@ namespace NFlog.Viewer
             }
         }
 
-        public void Handle(MessageReceivedEvent msg)
+        public void Handle(NFlogViewerMessage msg)
         {
-            Messages.Add(msg.Message);
-            if (msg.Message.MatchesSearchString(SearchString))
+            Execute.OnUIThreadAsync(() =>
             {
-                ShownMessages.Add(msg.Message);
-                BuildIndentLevel(ShownMessages);                
-            }
+                Messages.Add(msg);
+                if (msg.MatchesSearchString(SearchString))
+                {
+                    ShownMessages.Add(msg);
+                    BuildIndentLevel(ShownMessages);
+                }
+            });
         }
+
+        public Action<NFlogViewerMessage> MessageReceived { get; set; }
+
     }
 }

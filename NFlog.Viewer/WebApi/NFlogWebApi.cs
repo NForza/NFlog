@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web.Http.Dependencies;
 using Microsoft.Owin.Hosting;
 
 namespace NFlog.Viewer.WebApi
@@ -7,9 +8,11 @@ namespace NFlog.Viewer.WebApi
     {
         private IDisposable app;
 
-        public NFlogWebApi()
+        public NFlogWebApi( Func<IDependencyResolver> dependencyResolver )
         {
-            app = WebApp.Start<Startup>("http://localhost:12349");
+            Startup s = new Startup(dependencyResolver());
+
+            app = WebApp.Start("http://localhost:12349", s.Configuration);
         }
 
         ~NFlogWebApi()

@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Caliburn.Micro;
 using System;
 using System.Collections.ObjectModel;
