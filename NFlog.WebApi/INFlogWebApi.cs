@@ -1,4 +1,4 @@
-﻿namespace NFlog.Viewer.WebApi
+﻿namespace NFlog.WebApi
 {
     public interface INFlogWebApi
     {

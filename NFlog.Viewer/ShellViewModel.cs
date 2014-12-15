@@ -2,12 +2,11 @@ using System;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
-using System.Windows.Threading;
 using Caliburn.Micro;
 using Microsoft.Win32;
 using NFlog.Core;
 using NFlog.Viewer.Events;
-using NFlog.Viewer.WebApi;
+using NFlog.WebApi;
 
 namespace NFlog.Viewer
 {

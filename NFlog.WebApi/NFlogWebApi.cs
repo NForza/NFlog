@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Web.Http.Dependencies;
 using Microsoft.Owin.Hosting;
+using NFlog.WebApi;
 
 namespace NFlog.Viewer.WebApi
 {
-    internal class NFlogWebApi : INFlogWebApi, IDisposable
+    public class NFlogWebApi : INFlogWebApi, IDisposable
     {
         private IDisposable app;
 

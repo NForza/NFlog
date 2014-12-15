@@ -1,18 +1,19 @@
 ﻿using System;
 using System.Web.Http;
+using NFlog.Core;
 
 namespace NFlog.Viewer.WebApi
 {
     public class MessageController : ApiController
     {
-        private readonly Action<NFlogViewerMessage> messageReceived = delegate { };
+        private readonly Action<NFlogMessage> messageReceived = delegate { };
 
-        public MessageController(Action<NFlogViewerMessage> messageReceived)
+        public MessageController(Action<NFlogMessage> messageReceived)
         {
             this.messageReceived = messageReceived;
         }
 
-        public void Post([FromBody]NFlogViewerMessage message)
+        public void Post([FromBody]NFlogMessage message)
         {
             var handler = messageReceived;
             if (handler != null)

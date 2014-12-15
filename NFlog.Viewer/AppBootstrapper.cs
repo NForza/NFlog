@@ -6,6 +6,7 @@ using Autofac;
 using Autofac.Integration.WebApi;
 using Caliburn.Micro;
 using NFlog.Viewer.WebApi;
+using NFlog.WebApi;
 
 namespace NFlog.Viewer
 {
