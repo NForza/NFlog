@@ -36,8 +36,11 @@ namespace NFlog.Viewer
 
         public void RefreshFile()
         {
-            NFlogDeserializer deserializer = new NFlogDeserializer();
-            Messages = new ObservableCollection<NFlogViewerMessage>(deserializer.Deserialize(File.ReadAllText(fileName)).Cast<NFlogViewerMessage>());
+            if (fileName != null)
+            {
+                NFlogDeserializer deserializer = new NFlogDeserializer();
+                Messages = new ObservableCollection<NFlogViewerMessage>(deserializer.Deserialize(File.ReadAllText(fileName)).Cast<NFlogViewerMessage>());
+            }
         }
 
         private NFlogViewerMessage selectedShownMessage;
