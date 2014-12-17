@@ -91,6 +91,7 @@
     <Compile Include="MessageController.cs" />
     <Compile Include="NFlogWebApi.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="WebApiDependencyResolver.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

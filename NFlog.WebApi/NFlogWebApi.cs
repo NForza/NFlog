@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Web.Http.Dependencies;
 using Microsoft.Owin.Hosting;
-using NFlog.WebApi;
 
-namespace NFlog.Viewer.WebApi
+namespace NFlog.WebApi
 {
     public class NFlogWebApi : INFlogWebApi, IDisposable
     {

@@ -2,7 +2,7 @@
 using System.Web.Http;
 using NFlog.Core;
 
-namespace NFlog.Viewer.WebApi
+namespace NFlog.WebApi
 {
     public class MessageController : ApiController
     {

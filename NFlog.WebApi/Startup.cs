@@ -2,7 +2,7 @@
 using System.Web.Http.Dependencies;
 using Owin;
 
-namespace NFlog.Viewer.WebApi
+namespace NFlog.WebApi
 {
     public class Startup
     {

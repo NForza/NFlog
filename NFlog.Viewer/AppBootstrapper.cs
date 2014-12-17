@@ -5,7 +5,7 @@ using System.Web.Http.Dependencies;
 using Autofac;
 using Autofac.Integration.WebApi;
 using Caliburn.Micro;
-using NFlog.Viewer.WebApi;
+using NFlog.Core;
 using NFlog.WebApi;
 
 namespace NFlog.Viewer
@@ -28,10 +28,10 @@ namespace NFlog.Viewer
 
             containerBuilder.RegisterType<NFlogWebApi>().As<INFlogWebApi>().SingleInstance();
             containerBuilder.RegisterType<ShellViewModel>().As<IShell>().SingleInstance();
-            containerBuilder.RegisterType<AutofacWebApiDependencyResolver>().As<IDependencyResolver>();
+            containerBuilder.RegisterType<WebApiDependencyResolver>().As<IDependencyResolver>();
             containerBuilder.Register<ILifetimeScope>(c => Container);
-            containerBuilder.Register<Action<NFlogViewerMessage>>(c => c.Resolve<IShell>().MessageReceived);
-            containerBuilder.RegisterApiControllers(Assembly.GetExecutingAssembly()).InstancePerRequest();
+            containerBuilder.Register<Action<NFlogMessage>>(c => c.Resolve<IShell>().MessageReceived);
+            containerBuilder.RegisterApiControllers(typeof(MessageController).Assembly).InstancePerRequest();
 
             Container = containerBuilder.Build();
 

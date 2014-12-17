@@ -21,7 +21,7 @@ namespace NFlog.Viewer
             this.eventAggregator = eventAggregator;
             eventAggregator.Subscribe(this);
             Messages = new ObservableCollection<NFlogViewerMessage>();
-            MessageReceived = m => Handle(m);
+            MessageReceived = Handle;
         }
 
         public void LoadFile()
@@ -115,20 +115,22 @@ namespace NFlog.Viewer
             }
         }
 
-        public void Handle(NFlogViewerMessage msg)
+        public void Handle(NFlogMessage msg)
         {
+            NFlogViewerMessage viewerMessage = new NFlogViewerMessage(msg);
+
             Execute.OnUIThreadAsync(() =>
             {
-                Messages.Add(msg);
-                if (msg.MatchesSearchString(SearchString))
+                Messages.Add(viewerMessage);
+                if (viewerMessage.MatchesSearchString(SearchString))
                 {
-                    ShownMessages.Add(msg);
+                    ShownMessages.Add(viewerMessage);
                     BuildIndentLevel(ShownMessages);
                 }
             });
         }
 
-        public Action<NFlogViewerMessage> MessageReceived { get; set; }
+        public Action<NFlogMessage> MessageReceived { get; set; }
 
     }
 }

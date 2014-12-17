@@ -1,9 +1,10 @@
 using System;
+using NFlog.Core;
 
 namespace NFlog.Viewer
 {
     public interface IShell
     {
-        Action<NFlogViewerMessage> MessageReceived { get; set; }
+        Action<NFlogMessage> MessageReceived { get; set; }
     }
 }
