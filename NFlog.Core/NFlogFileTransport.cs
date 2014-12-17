@@ -29,8 +29,7 @@ namespace NFlog.Core
         public void Log(string message)
         {
             EnsureStreamWriter();
-            logfile.WriteLine(message);
-            logfile.WriteLine(NFlogMessage.MessageSeparator);
+            logfile.Write(message + NFlogMessage.MessageSeparator);
         }
 
         private void EnsureStreamWriter()
