@@ -12,7 +12,7 @@ namespace NFlog.Core
             AppName = Assembly.GetEntryAssembly().GetName().Name;
             ThreadID = Thread.CurrentThread.ManagedThreadId;
         }
-        public const string MessageSeparator = "##NFLOG##";
+        public const string MessageSeparator = "\r##NFLOG##\r";
         public int MessageType { get; set; }
         public string Message { get; set; }
         public DateTime DateTime { get; set; }
