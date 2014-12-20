@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+VisualStudioVersion = 12.0.30626.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NFlog", "NFlog\NFlog.csproj", "{F6F61371-17C2-4101-BE9C-ADA10B60989F}"
 EndProject
@@ -24,6 +24,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NuSpec", "NuSpec", "{70669C
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NFlog.WebApi", "NFlog.WebApi\NFlog.WebApi.csproj", "{503D5CCC-7C1D-40FD-BB28-538899A2E16F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NFlog.WebViewer", "NFlog.WebViewer\NFlog.WebViewer.csproj", "{C4B203B9-E993-4E09-BBEE-59FA7F270921}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NFlog.WebViewer.Tests", "NFlog.WebViewer.Tests\NFlog.WebViewer.Tests.csproj", "{24CA0676-54C8-4F56-B18B-87963DD33972}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +55,14 @@ Global
 		{503D5CCC-7C1D-40FD-BB28-538899A2E16F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{503D5CCC-7C1D-40FD-BB28-538899A2E16F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{503D5CCC-7C1D-40FD-BB28-538899A2E16F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4B203B9-E993-4E09-BBEE-59FA7F270921}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4B203B9-E993-4E09-BBEE-59FA7F270921}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4B203B9-E993-4E09-BBEE-59FA7F270921}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4B203B9-E993-4E09-BBEE-59FA7F270921}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24CA0676-54C8-4F56-B18B-87963DD33972}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24CA0676-54C8-4F56-B18B-87963DD33972}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24CA0676-54C8-4F56-B18B-87963DD33972}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24CA0676-54C8-4F56-B18B-87963DD33972}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
