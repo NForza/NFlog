@@ -18,13 +18,7 @@ namespace NFlog.WebApi
         {
             HttpConfiguration config = new HttpConfiguration();
             config.DependencyResolver = dependencyResolver;
-
-            config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
-            );
-
+            config.MapHttpAttributeRoutes();
             appBuilder.UseWebApi(config);
         }
     }

@@ -4,6 +4,7 @@ using NFlog.Core;
 
 namespace NFlog.WebApi
 {
+    [Route("nflog/message")]
     public class MessageController : ApiController
     {
         private readonly Action<NFlogMessage> messageReceived = delegate { };
@@ -13,11 +14,15 @@ namespace NFlog.WebApi
             this.messageReceived = messageReceived;
         }
 
+        public string Get()
+        {
+            return "NFlog WebApi";
+        }
+
         public void Post([FromBody]NFlogMessage message)
         {
-            var handler = messageReceived;
-            if (handler != null)
-                handler(message);
+            if (messageReceived != null)
+                messageReceived(message);
         }
     }
 }

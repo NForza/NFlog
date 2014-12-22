@@ -1,13 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using Autofac;
 using Autofac.Integration.WebApi;
+using NFlog.Core;
 using NFlog.WebApi;
+using NFlog.WebViewer.Controllers;
+using WebGrease.Configuration;
 
 namespace NFlog.WebViewer
 {
@@ -16,6 +17,7 @@ namespace NFlog.WebViewer
         protected void Application_Start()
         {
             ConfigureContainer();
+            GlobalConfiguration.Configure(WebApiConfig.Register);
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
@@ -29,14 +31,14 @@ namespace NFlog.WebViewer
             containerBuilder.RegisterType<NFlogWebApi>().As<INFlogWebApi>().SingleInstance();
             containerBuilder.RegisterType<WebApiDependencyResolver>().As<System.Web.Http.Dependencies.IDependencyResolver>();
             containerBuilder.Register<ILifetimeScope>(c => Container);
-            //containerBuilder.Register<Action<NFlogMessage>>(c => c.Resolve<IShell>().MessageReceived);
+            containerBuilder.Register<Action<NFlogMessage>>(c => StaticMessageReceiver.MessageReceived);
             containerBuilder.RegisterApiControllers(typeof(MessageController).Assembly).InstancePerRequest();
 
             Container = containerBuilder.Build();
 
         }
 
-        public IContainer Container { get; set; }
+        public static IContainer Container { get; set; }
     }
 }
          

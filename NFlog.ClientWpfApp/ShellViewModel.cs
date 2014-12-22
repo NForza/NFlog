@@ -15,7 +15,7 @@ namespace NFlog.TestApp
             logger =
                new NFlogBuilder()
                    .LogInMemory(AddMessage)
-                   .LogUsingHttpAt("http://localhost:12349/api/message")
+                   .LogUsingHttpAt("http://localhost:12349/nflog/message")
                    .Build();
         }
 
