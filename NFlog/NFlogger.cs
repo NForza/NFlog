@@ -20,6 +20,7 @@ namespace NFlog
         {
             if (Enabled)
             {
+                message.Initialize();
                 var msg = Serializer.Serialize(message);
                 Transport.Log(msg);
                 if (Next != null)

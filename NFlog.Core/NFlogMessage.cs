@@ -8,11 +8,7 @@ namespace NFlog.Core
 {
     public class NFlogMessage
     {
-        public static string appName = "";
-        static NFlogMessage()
-        {
-            DetermineAppName();
-        }
+        public static string appName = null;        
 
         private static void DetermineAppName()
         {
@@ -51,8 +47,11 @@ namespace NFlog.Core
         }
 
 
-        public NFlogMessage()
+        public void Initialize()
         {
+            if (appName == null)
+                DetermineAppName();
+
             DateTime = DateTime.Now;
 
             AppName = Assembly.GetEntryAssembly().GetName().Name;

@@ -13,5 +13,10 @@ namespace NFlog.WebViewer
             if( message != null)
                 messages.Add(message);    
         }
+
+        public static IEnumerable<NFlogMessage> Messages
+        {
+            get { return messages; }
+        }
     }
 }

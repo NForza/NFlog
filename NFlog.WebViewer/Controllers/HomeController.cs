@@ -10,7 +10,7 @@ namespace NFlog.WebViewer.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            return View(StaticMessageReceiver.Messages);
         }
 
         public ActionResult About()
