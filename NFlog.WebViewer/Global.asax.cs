@@ -7,8 +7,6 @@ using Autofac;
 using Autofac.Integration.WebApi;
 using NFlog.Core;
 using NFlog.WebApi;
-using NFlog.WebViewer.Controllers;
-using WebGrease.Configuration;
 
 namespace NFlog.WebViewer
 {

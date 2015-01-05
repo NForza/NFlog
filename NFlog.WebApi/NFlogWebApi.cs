@@ -12,7 +12,7 @@ namespace NFlog.WebApi
         {
             Startup s = new Startup(dependencyResolver());
 
-            app = WebApp.Start("http://localhost:12349", s.Configuration);
+            app = WebApp.Start("http://localhost:12350", s.Configuration);
         }
 
         ~NFlogWebApi()
