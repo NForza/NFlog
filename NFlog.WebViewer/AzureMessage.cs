@@ -1,13 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using Microsoft.WindowsAzure.Storage.Table;
 
 namespace NFlog.WebViewer
 {
     public class AzureMessage : TableEntity
     {
+        public AzureMessage()
+        {
+            
+        }
+
         public AzureMessage(string appName)
         {
             PartitionKey = appName;

@@ -7,11 +7,11 @@ namespace NFlog.WebApi
     [Route("nflog/message")]
     public class MessageController : ApiController
     {
-        private readonly Action<NFlogMessage> messageReceived = delegate { };
+        private readonly IMessageReceiver messageReceiver;
 
-        public MessageController(Action<NFlogMessage> messageReceived)
+        public MessageController(IMessageReceiver messageReceiver)
         {
-            this.messageReceived = messageReceived;
+            this.messageReceiver = messageReceiver;
         }
 
         public string Get()
@@ -21,8 +21,8 @@ namespace NFlog.WebApi
 
         public void Post([FromBody]NFlogMessage message)
         {
-            if (messageReceived != null)
-                messageReceived(message);
+            if (messageReceiver != null)
+                messageReceiver.MessageReceived(message);
         }
     }
 }

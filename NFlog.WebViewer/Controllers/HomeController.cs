@@ -1,16 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace NFlog.WebViewer.Controllers
 {
     public class HomeController : Controller
     {
+        private IMessageProvider messageProvider;
+
+        public HomeController(IMessageProvider messageProvider)
+        {
+            this.messageProvider = messageProvider;
+        }
+
         public ActionResult Index()
         {
-            return View(StaticMessageReceiver.Messages);
+            return View(messageProvider.GetMessagesForApp("NFlog.TestApp"));
         }
 
         public ActionResult About()
