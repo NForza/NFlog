@@ -17,7 +17,7 @@ namespace NFlog.WebViewer
                 new TableQuery<AzureMessage>()
                 .Where(TableQuery.GenerateFilterCondition("AppName", QueryComparisons.Equal, appName));
 
-            return table.ExecuteQuery(query).Select( am =>
+            return table.ExecuteQuery(query).OrderByDescending(am=>am.DateTime).Select( am =>
                 new NFlogMessage()
                 {
                     AppName = am.AppName,
