@@ -11,8 +11,7 @@ namespace NFlog.WebViewer
     {
         static List<NFlogMessage> messages = new List<NFlogMessage>();
 
-        static CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-            ConfigurationManager.ConnectionStrings["AzureStorage"].ConnectionString);
+        private static CloudTable _table;
 
         public static void MessageReceived(NFlogMessage message)
         {
@@ -25,10 +24,7 @@ namespace NFlog.WebViewer
 
         private static void AddMessageToAzureStorage(NFlogMessage message)
         {
-            var tableClient = storageAccount.CreateCloudTableClient();
-            // Create the table if it doesn't exist.
-            CloudTable table = tableClient.GetTableReference("nflog");
-            table.CreateIfNotExists();
+            var table = GetCloudTable();
 
             AzureMessage amsg = new AzureMessage(message.AppName);
 
@@ -38,9 +34,23 @@ namespace NFlog.WebViewer
             amsg.Message = message.Message;
             amsg.MessageType = message.MessageType;
             amsg.ThreadID = message.ThreadID;
-            
+
             TableOperation insertOperation = TableOperation.Insert(amsg);
             var result = table.Execute(insertOperation);
+        }
+
+        private static CloudTable GetCloudTable()
+        {
+            if (_table == null)
+            {
+                var storageAccount = CloudStorageAccount.Parse(
+                    ConfigurationManager.ConnectionStrings["AzureStorage"].ConnectionString);
+
+                var tableClient = storageAccount.CreateCloudTableClient();
+                _table = tableClient.GetTableReference("nflog");
+                _table.CreateIfNotExists();
+            }
+            return _table;
         }
 
         public static IEnumerable<NFlogMessage> Messages
